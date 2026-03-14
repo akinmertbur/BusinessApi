@@ -17,12 +17,39 @@ public class AppDbContext : DbContext {
             .HasIndex(u => u.Email)
             .IsUnique();
 
-        modelBuilder.Entity<User>()
-            .Property(u => u.Role)
-            .HasDefaultValue("User");
-
         modelBuilder.Entity<Product>()
             .Property(p => p.Price)
             .HasColumnType("decimal(18,2)");
+
+        modelBuilder.Entity<User>().HasData(
+        new User {
+            Id = 1,
+            Email = "admin@example.com",
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin123"),
+            Role = "Admin",
+            CreatedAt = DateTime.UtcNow
+        }
+    );
+
+        modelBuilder.Entity<Product>().HasData(
+            new Product {
+                Id = 1,
+                Name = "Laptop",
+                Description = "Business laptop",
+                Price = 25000,
+                StockQuantity = 10,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            },
+            new Product {
+                Id = 2,
+                Name = "Mouse",
+                Description = "Wireless mouse",
+                Price = 500,
+                StockQuantity = 50,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            }
+        );
     }
 }
