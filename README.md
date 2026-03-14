@@ -1,7 +1,8 @@
 # Business API
 
-This project is a RESTful API built with ASP.NET Core 8 and Entity Framework Core.  
-It demonstrates JWT authentication, role-based authorization, and CRUD operations for products.
+This project is a RESTful API built with ASP.NET Core 8 and Entity
+Framework Core. It demonstrates JWT authentication, role-based
+authorization, and CRUD operations for products.
 
 ## Technologies
 
@@ -13,51 +14,68 @@ It demonstrates JWT authentication, role-based authorization, and CRUD operation
 
 ## Setup
 
-1. Clone the repository
+1.  Clone the repository
 
-git clone <repo-url>  
+```bash
+git clone <repo-url>
 cd BusinessApi
+```
 
-2. Configure the database connection in `appsettings.json`
+2.  Configure the database connection in `appsettings.json`
 
+```json
 "ConnectionStrings": {
   "DefaultConnection": "Server=YOUR_SERVER;Database=BusinessApiDb;Trusted_Connection=True;TrustServerCertificate=True;"
 }
+```
 
-3. Set the JWT secret
+3.  Set the JWT secret
 
+```bash
 dotnet user-secrets set "Jwt:Key" "YOUR_SECRET_KEY"
+```
 
-4. Apply database migrations
+4.  Apply database migrations
 
+```bash
 dotnet ef database update
+```
 
-5. Run the API
+5.  Run the API
 
+```bash
 dotnet run
+```
 
-Swagger will be available at:  
-https://localhost:<port>/swagger
+Swagger will be available at:
+
+    https://localhost:<port>/swagger
 
 ## Authentication Flow
 
-1. Register a user  
+Register a user:
+
+```bash
 POST /api/auth/register
+```
 
-2. Login to receive a JWT token  
+Login to receive a JWT token:
+
+```bash
 POST /api/auth/login
+```
 
-3. Authorize in Swagger by entering:
+Authorize in Swagger by entering:
 
-Bearer YOUR_TOKEN
+    Bearer YOUR_TOKEN
 
 ## Product Endpoints
 
-GET /api/products  
-GET /api/products/{id}  
-POST /api/products (Admin only)  
-PUT /api/products/{id} (Admin only)  
-DELETE /api/products/{id} (Admin only)
+    GET /api/products
+    GET /api/products/{id}
+    POST /api/products (Admin only)
+    PUT /api/products/{id} (Admin only)
+    DELETE /api/products/{id} (Admin only)
 
 ## Notes
 
